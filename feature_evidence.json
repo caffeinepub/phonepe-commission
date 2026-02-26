@@ -1,0 +1,46 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-customer-photos-gallery-page-section-in-the-frontend-where-users-can-view-all-saved-customer-photos-in-a-responsive-grid-layout-upload-new-photos-with-a-name-label-using-a-file-input-and-delete-existing-photos-with-a-confirmation-prompt-the-gallery-should-be-accessible-via-a-navigation-tab-or-button-in-the-app-header-alongside-the-existing-commission-dashboard",
+      "featureTitle": "Create a Customer Photos Gallery page/section in the frontend where users can view all saved customer photos in a responsive grid layout, upload new photos (with a name label) using a file input, and delete existing photos with a confirmation prompt. The gallery should be accessible via a navigation tab or button in the app header alongside the existing commission dashboard.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/AppHeader.tsx",
+        "frontend/src/components/CustomerPhotosGallery.tsx",
+        "frontend/src/components/DeletePhotoDialog.tsx",
+        "frontend/src/components/PhotoCard.tsx",
+        "frontend/src/components/UploadPhotoDialog.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-10"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-react-query-hooks-for-the-customer-photos-gallery-a-query-to-fetch-all-customer-photos-and-mutations-to-add-and-delete-a-customer-photo-following-the-same-pattern-as-the-existing-commission-hooks-in-frontend-src-hooks-usequeries-ts",
+      "featureTitle": "Add React Query hooks for the customer photos gallery: a query to fetch all customer photos and mutations to add and delete a customer photo, following the same pattern as the existing commission hooks in frontend/src/hooks/useQueries.ts.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-11"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Customer Photos Gallery",
+  "requirements": [
+    {
+      "id": "REQ-10",
+      "summary": "Create a Customer Photos Gallery page with upload, view, and delete functionality, accessible via navigation in the app header",
+      "acceptanceCriteria": [
+        "A 'Customer Photos' tab or button appears in the app header/navigation.",
+        "Clicking it shows a grid of all saved customer photos with their name labels.",
+        "Each photo card has a delete button that opens a confirmation dialog before removal.",
+        "An 'Upload Photo' button opens a form/dialog with a name input and a file picker accepting image files.",
+        "After upload, the gallery refreshes and the new photo appears in the grid.",
+        "The gallery uses the existing PhonePe-inspired indigo/magenta theme and card-based layout consistent with the rest of the app.",
+        "An empty state message is shown when no photos have been saved yet."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CustomerPhotosGallery.tsx",
+          "operation": "create",
+          "description": "Create the Customer Photos Gallery page component that displays all customer photos in a responsive grid layout. Include an upload button that opens an UploadPhotoDialog, an empty state message when no photos exist, and render photo cards with name labels and delete buttons. Use the useCustomerPhotos query hook to fetch photos and integrate with the existing theme and card-based layout."
+        },
+        {
+          "path": "frontend/src/components/PhotoCard.tsx",
+          "operation": "create",
+          "description": "Create a reusable PhotoCard component that displays a single customer photo with its name label and a delete button. The card should use the existing SummaryCard styling approach and trigger a delete confirmation dialog when the delete button is clicked. Display the Base64-encoded image data from the backend using an <img> element."
+        },
+        {
+          "path": "frontend/src/components/UploadPhotoDialog.tsx",
+          "operation": "create",
+          "description": "Create a modal dialog component for uploading a new customer photo. Include a text input for the photo name/label and a file input accepting image files (jpg, png, etc.). Convert the selected image to Base64 encoding before calling the useAddCustomerPhoto mutation. Show validation errors if name is empty or no file is selected. Close the dialog and show a success toast after successful upload."
+        },
+        {
+          "path": "frontend/src/components/DeletePhotoDialog.tsx",
+          "operation": "create",
+          "description": "Create a confirmation dialog component for deleting a customer photo, following the same pattern as DeleteConfirmationDialog. Accept a photo ID and name as props, call the useDeleteCustomerPhoto mutation on confirmation, and show toast notifications on success or failure."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add state management for toggling between the commission dashboard and the customer photos gallery views. Import CustomerPhotosGallery and conditionally render either CommissionDashboard or CustomerPhotosGallery based on the active view state. Pass the view toggle function to AppHeader so the navigation buttons can switch views."
+        },
+        {
+          "path": "frontend/src/components/AppHeader.tsx",
+          "operation": "modify",
+          "description": "Add a navigation section with two buttons/tabs: 'Dashboard' and 'Customer Photos'. Accept a prop for the active view and an onViewChange callback. Style the active tab with the primary theme color to indicate the current view. Position the navigation buttons horizontally next to or below the app title and subtitle."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Add React Query hooks for fetching, adding, and deleting customer photos following the existing commission hooks pattern",
+      "acceptanceCriteria": [
+        "A `useCustomerPhotos` query hook fetches the list of photos from the backend.",
+        "An `useAddCustomerPhoto` mutation hook uploads a new photo and invalidates the photos query on success.",
+        "A `useDeleteCustomerPhoto` mutation hook deletes a photo by ID and invalidates the photos query on success.",
+        "Toast notifications are shown on upload/delete success and failure, consistent with existing mutation patterns."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Add three new React Query hooks: useCustomerPhotos (query to fetch all photos via getAllPhotos backend function), useAddCustomerPhoto (mutation to add a photo via addPhoto backend function, accepting id, name, and Base64 image data, with query invalidation and success/error toast notifications), and useDeleteCustomerPhoto (mutation to delete a photo by ID via deletePhoto backend function, with query invalidation and toast notifications). Follow the exact same patterns and error handling as the existing useCommissions, useAddCommission, and useDeleteCommission hooks."
+        }
+      ]
+    }
+  ]
+}

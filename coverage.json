@@ -1,0 +1,85 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T00:47:09.251Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 4,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-10",
+        "summary": "Create a Customer Photos Gallery page/section in the frontend where users can view all saved customer photos in a responsive grid layout, upload new photos (with a name label) using a file input, and delete existing photos with a confirmation prompt. The gallery should be accessible via a navigation tab or button in the app header alongside the existing commission dashboard.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CustomerPhotosGallery.tsx",
+          "frontend/src/components/PhotoCard.tsx",
+          "frontend/src/components/UploadPhotoDialog.tsx",
+          "frontend/src/components/DeletePhotoDialog.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/AppHeader.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CustomerPhotosGallery.tsx",
+          "frontend/src/components/PhotoCard.tsx",
+          "frontend/src/components/UploadPhotoDialog.tsx",
+          "frontend/src/components/DeletePhotoDialog.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/components/AppHeader.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Add React Query hooks for the customer photos gallery: a query to fetch all customer photos and mutations to add and delete a customer photo, following the same pattern as the existing commission hooks in frontend/src/hooks/useQueries.ts.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/useQueries.ts"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Add a backend data model to store customer photos, with each entry containing a unique photo ID, a name/label, the image data (stored as Blob or Base64-encoded Text), and an upload timestamp.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Implement backend functions to upload a new customer photo (with name and image data), retrieve all saved customer photos, and delete a customer photo by ID.",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "build-request.json",
+    "build-template/README.md",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/AppHeader.tsx",
+    "frontend/src/components/CustomerPhotosGallery.tsx",
+    "frontend/src/components/DeletePhotoDialog.tsx",
+    "frontend/src/components/PhotoCard.tsx",
+    "frontend/src/components/UploadPhotoDialog.tsx",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useQueries.ts",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

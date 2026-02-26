@@ -1,0 +1,66 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T00:47:09.247Z",
+  "summary": "The diff implements most of the required functionality for the Customer Photos Gallery feature. Backend data model, CRUD functions, frontend gallery components, navigation tab, and React Query hooks are all present. However, several specific acceptance criteria are not fully met: the backend data model lacks an upload timestamp field (REQ-8), the backend function names differ from the spec (REQ-9 specifies addCustomerPhoto/getCustomerPhotos/deleteCustomerPhoto but the implementation uses addPhoto/getAllPhotos/deletePhoto), and the React Query mutation hooks lack toast notifications in their onSuccess/onError handlers (REQ-11).",
+  "missing_requirements": [
+    {
+      "id": "REQ-8",
+      "requirement": "Each entry must contain an upload timestamp.",
+      "reason": "The FrontPhoto type in backend/main.mo only has front_id_card_image_name and front_id_card_image fields. No timestamp field exists in the data model.",
+      "evidence": [
+        "backend/main.mo",
+        "backend/migration.mo"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "An addCustomerPhoto function, a getCustomerPhotos query function, and a deleteCustomerPhoto function as specified.",
+      "reason": "The backend implements addPhoto, getAllPhotos, and deletePhoto instead of the specified function names addCustomerPhoto, getCustomerPhotos, and deleteCustomerPhoto.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "requirement": "Toast notifications are shown on upload/delete success and failure, consistent with existing mutation patterns in the hook's onSuccess/onError callbacks.",
+      "reason": "The useAddCustomerPhoto and useDeleteCustomerPhoto hooks in useQueries.ts do not include toast notifications in their onSuccess/onError handlers. Toasts are instead handled inside the dialog components, which is inconsistent with the pattern requested.",
+      "evidence": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/components/UploadPhotoDialog.tsx",
+        "frontend/src/components/DeletePhotoDialog.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "A separate migration module file (backend/migration.mo) was added to handle canister upgrade data migration with an OldActor/NewActor transformation pattern.",
+      "reason": "The requirements specified stable data storage for upgrades but did not request a separate migration module file. This is an implementation detail beyond what was specified.",
+      "evidence": [
+        "backend/migration.mo"
+      ]
+    },
+    {
+      "description": "Photo deletion uses BigInt(photoIndex) (array index) as the photo ID rather than a stable stored ID.",
+      "reason": "The spec requires deletion by a unique photo ID stored with each entry. Using array index as an ad-hoc ID is a design choice not requested and could lead to incorrect deletions.",
+      "evidence": [
+        "frontend/src/components/PhotoCard.tsx",
+        "frontend/src/components/UploadPhotoDialog.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.82,
+  "changed_files": [
+    "backend/main.mo",
+    "backend/migration.mo",
+    "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/components/AppHeader.tsx",
+    "frontend/src/components/CustomerPhotosGallery.tsx",
+    "frontend/src/components/DeletePhotoDialog.tsx",
+    "frontend/src/components/PhotoCard.tsx",
+    "frontend/src/components/UploadPhotoDialog.tsx",
+    "frontend/src/hooks/useQueries.ts",
+    "project_state.json"
+  ]
+}

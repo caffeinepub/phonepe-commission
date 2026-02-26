@@ -1,0 +1,18 @@
+{
+  "frontend/src/index.css": "Global styles with PhonePe-inspired OKLCH color system — deep indigo/violet primary, magenta-pink accent, green/amber/red commission indicators, Inter font, light and dark mode tokens.",
+  "frontend/tailwind.config.js": "Tailwind config extending theme with Inter font, PhonePe brand colors, commission indicator colors, custom border radii, and card shadow utilities.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations — commissions (fetch, stats, add, delete) plus three new customer photo hooks: useCustomerPhotos (fetch all), useAddCustomerPhoto (upload with cache invalidation), and useDeleteCustomerPhoto (delete by ID with cache invalidation).",
+  "frontend/src/App.tsx": "Root app component with view state management toggling between 'dashboard' and 'photos' views, passing activeView and onViewChange props to AppHeader, and conditionally rendering CommissionDashboard or CustomerPhotosGallery.",
+  "frontend/src/components/AppHeader.tsx": "Sticky header with PhonePe logo, app title, a navigation tab bar for switching between Dashboard and Customer Photos views (with active state styling), and the Live Tracker badge.",
+  "frontend/src/components/AppFooter.tsx": "Footer with copyright year, heart icon, and caffeine.ai attribution link with UTM tracking.",
+  "frontend/src/components/SummaryCard.tsx": "Reusable stat card component displaying a title, large value, subtitle, and icon with optional gradient overlay using shadcn Card.",
+  "frontend/src/components/CommissionDashboard.tsx": "Main dashboard page with four summary stat cards, refresh/add buttons, and the CommissionTable; fetches data via React Query hooks.",
+  "frontend/src/components/CommissionTable.tsx": "Sortable commission entries table with color-coded commission badges (green/amber/red), delete action per row, and empty/loading states.",
+  "frontend/src/components/AddCommissionForm.tsx": "Modal dialog form for adding a commission entry with merchant name, category, amount, rate, date inputs, real-time commission calculation, and validation.",
+  "frontend/src/components/DeleteConfirmationDialog.tsx": "AlertDialog confirmation modal for deleting a commission entry, calling the delete mutation with loading state and toast feedback.",
+  "frontend/index.html": "HTML entry point with updated page title \"PhonePe Commission Tracker\" and favicon pointing to the generated logo asset.",
+  "frontend/src/components/CustomerPhotosGallery.tsx": "Customer Photos Gallery page showing a responsive grid of PhotoCard components, with loading skeletons, an empty state with upload CTA, a refresh button, and an Upload Photo button that opens UploadPhotoDialog.",
+  "frontend/src/components/PhotoCard.tsx": "Reusable card component displaying a single customer photo (converted from Uint8Array to blob URL) with its name label, and a hover-revealed delete button that opens DeletePhotoDialog.",
+  "frontend/src/components/UploadPhotoDialog.tsx": "Modal dialog for uploading a new customer photo with a name input, drag-and-drop style file picker with image preview, validation, and calls useAddCustomerPhoto mutation with toast feedback.",
+  "frontend/src/components/DeletePhotoDialog.tsx": "AlertDialog confirmation modal for deleting a customer photo by ID, calling useDeleteCustomerPhoto mutation with loading state and toast notifications on success or failure."
+}
